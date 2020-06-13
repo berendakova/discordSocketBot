@@ -12,5 +12,5 @@ public interface AnswerRepository extends JpaRepository<Answer,Integer> {
 
     List<Answer> findAllByAnimal(Animal animal);
     Optional<Answer> findByAnimalAndQuestion(Animal animal, Question question);
-
+    List<Answer> findAll();
 }

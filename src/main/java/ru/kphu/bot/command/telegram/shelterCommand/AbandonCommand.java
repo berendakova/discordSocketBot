@@ -1,4 +1,5 @@
-package ru.kphu.bot.command;
+package ru.kphu.bot.command.telegram.shelterCommand;
+
 
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.GenericEvent;
@@ -6,22 +7,22 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-import ru.kphu.bot.dto.AnswerDto;
+import ru.kphu.bot.command.discord.Command;
 import ru.kphu.bot.model.Animal;
 import ru.kphu.bot.repositories.AnimalRepository;
 import ru.kphu.bot.service.PetService;
 import ru.kphu.bot.utils.ValidationUtils;
 
-import java.util.Optional;
 @Component
-@Profile("dis")
-public class GetHomeCommand extends Command {
+@Profile("tek")
+public class AbandonCommand extends Command {
     private final ValidationUtils validationUtils;
     @Autowired
     AnimalRepository animalRepository;
     @Autowired
     PetService animalService;
-    public GetHomeCommand(ValidationUtils validationUtils) {
+
+    public AbandonCommand(ValidationUtils validationUtils) {
         this.validationUtils = validationUtils;
     }
 
@@ -41,17 +42,20 @@ public class GetHomeCommand extends Command {
             String message = ((MessageReceivedEvent) event).getMessage().getContentRaw();
             String name = message.split(" ")[2];
             Animal anismal = animalRepository.findAnimalByName(name);
-            if(anismal.getName()!= null){
-                if(anismal.getStatus() == 0){
-                    anismal.setStatus(1);
-                    anismal.setIdUser(((MessageReceivedEvent) event).getAuthor().getId());
-                    animalRepository.save(anismal);
-                    channel.sendMessage("You have booked an animal").queue();
+            String animalUserId = anismal.getIdUser();
 
+            if(animalUserId.equals(((MessageReceivedEvent) event).getAuthor().getId())){
+                if (anismal.getStatus() == 1) {
+                    anismal.setStatus(0);
+                    animalRepository.save(anismal);
+                    channel.sendMessage("You abandon from animal").queue();
+
+                } else {
+                    channel.sendMessage("You can't  abandon an animal").queue();
                 }
-                else{
-                    channel.sendMessage("You can't  booked an animal").queue();
-                }
+            }
+            else{
+                channel.sendMessage("You can't  abandon an animal").queue();
             }
 
         }).start();
@@ -59,11 +63,11 @@ public class GetHomeCommand extends Command {
 
     @Override
     public Headers header() {
-        return Headers.getHome;
+        return Headers.abandonAnimal;
     }
 
     @Override
     public String description() {
-        return "You can get Animal at Home - getHome @Tanuhabomba NameAnimal";
+        return "You can refuse an animal- abandonAnimal @Tanuhabomba NameAnimal";
     }
 }

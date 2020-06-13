@@ -27,7 +27,7 @@ public class GameServiceImpl implements GameService {
         Animal animal = animals.get(random.nextInt(max_value));
         Game game = Game
                 .builder()
-                .id(null)
+                .id(0)
                 .animal(animal)
                 .isFinished(false)
                 .build();

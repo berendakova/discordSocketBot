@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "animal_id")

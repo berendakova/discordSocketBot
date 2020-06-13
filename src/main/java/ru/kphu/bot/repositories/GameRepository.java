@@ -6,5 +6,5 @@ import ru.kphu.bot.model.Game;
 import java.util.Optional;
 
 public interface GameRepository extends JpaRepository<Game, Long> {
-    Optional<Game> findById(long id);
+    Optional<Game> findById(int id);
 }

@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
+import org.telegram.telegrambots.ApiContextInitializer;
 
 @SpringBootApplication
 public class BotApplication {
@@ -21,7 +22,7 @@ public class BotApplication {
 	}
 
 	@Bean
-	@Profile({"dis","web"})
+	@Profile({"dis","tel"})
 	public RestOperations restOperations() {
 		RestTemplate rest = new RestTemplate();
 		rest.getMessageConverters().add(0, mappingJacksonHttpMessageConverter());
@@ -36,7 +37,9 @@ public class BotApplication {
 	}
 
 	public static void main(String[] args) {
+		ApiContextInitializer.init();
 		SpringApplication.run(BotApplication.class, args);
+
 	}
 
 }

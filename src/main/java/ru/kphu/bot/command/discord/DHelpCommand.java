@@ -1,4 +1,4 @@
-package ru.kphu.bot.command;
+package ru.kphu.bot.command.discord;
 
 
 import lombok.var;
@@ -10,7 +10,10 @@ import net.dv8tion.jda.api.events.GenericEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.springframework.context.ApplicationContext;
 
-import ru.kphu.bot.MessageResolver;
+import ru.kphu.bot.command.discord.gameCommand.AddAnswerCommand;
+import ru.kphu.bot.command.discord.gameCommand.AskCommand;
+import ru.kphu.bot.command.discord.gameCommand.StartCommand;
+import ru.kphu.bot.command.discord.shelterCommand.*;
 import ru.kphu.bot.utils.ValidationUtils;
 
 import java.awt.*;

@@ -44,7 +44,7 @@ public class DiscordConfig {
         intents.add(GatewayIntent.DIRECT_MESSAGE_REACTIONS);
         intents.add(GatewayIntent.DIRECT_MESSAGE_TYPING);
 
-        JDABuilder builder = JDABuilder.createDefault("NzA5MDQ4MDQ5Mjc1NTAyNzIy.XrkCGg.GeloY-bDRkquFjc0L1kkMNgPO3o");
+        JDABuilder builder = JDABuilder.createDefault("NzA5MDQ4MDQ5Mjc1NTAyNzIy.Xs9t9g.SioscLU7ochgYMeO-JqnFHOVk-Y");
 
         builder.setActivity(Activity.playing("JaVa"));
 

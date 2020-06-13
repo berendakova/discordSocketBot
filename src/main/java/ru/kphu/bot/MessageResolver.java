@@ -1,6 +1,5 @@
 package ru.kphu.bot;
 
-
 import lombok.var;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Message;
@@ -8,7 +7,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-import ru.kphu.bot.command.Command;
+import ru.kphu.bot.command.discord.Command;
 
 import java.util.HashMap;
 import java.util.Map;

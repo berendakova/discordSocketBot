@@ -1,4 +1,4 @@
-package ru.kphu.bot.command;
+package ru.kphu.bot.command.discord;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +27,7 @@ public abstract class Command {
      getMyAnimals,
      abandonAnimal,
      ask,
+        questions,
      assumption,
      help,
 

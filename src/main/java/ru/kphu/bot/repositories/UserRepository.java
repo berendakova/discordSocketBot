@@ -4,4 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import ru.kphu.bot.model.User;
 
 public interface UserRepository extends JpaRepository<User,Integer> {
+    User getUserByName(String name);
 }
